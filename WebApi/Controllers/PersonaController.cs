@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using WebApi.ModelsEntities;
 
 namespace WebApi.Controllers
 {
@@ -30,10 +31,10 @@ namespace WebApi.Controllers
 
         // GET: api/Persona/5
         [HttpGet("{id}", Name = "Get")]
-        public IActionResult<Persona> Get(int id)
+        public IActionResult Get(int id)
         {
-            var persona = dbContext.Persona.Get( x=> x.Id).FirstOrDefault();
-            return persona;
+            var persona = dbContext.Persona.Where( x=> x.Id == id).FirstOrDefault();
+            return Ok(persona);
         }
 
         // POST: api/Persona
