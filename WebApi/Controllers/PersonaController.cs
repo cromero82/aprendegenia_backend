@@ -12,11 +12,13 @@ namespace WebApi.Controllers
     [ApiController]
     public class PersonaController : ControllerBase
     {
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<PersonaController> _logger;
+        private readonly ApplicationDbContext dbContext;
 
-        public PersonaController(ILogger<WeatherForecastController> logger)
+        public PersonaController(ILogger<PersonaController> logger, ApplicationDbContext dbContext)
         {
             _logger = logger;
+            this.dbContext = dbContext;
         }
 
         // GET: api/Persona
@@ -28,10 +30,10 @@ namespace WebApi.Controllers
 
         // GET: api/Persona/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public IActionResult<Persona> Get(int id)
         {
-            // var persona = db
-            return "value";
+            var persona = dbContext.Persona.Get( x=> x.Id).FirstOrDefault();
+            return persona;
         }
 
         // POST: api/Persona
