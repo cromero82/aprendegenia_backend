@@ -27,9 +27,10 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-             services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddCors();
+            services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("AppDbContext"))
-                );
+            );
             services.AddControllers();
         }
 
@@ -51,6 +52,10 @@ namespace WebApi
             {
                 endpoints.MapControllers();
             });
+            app.UseCors(builder => 
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()//.WithOrigins("http://localhost:4200")
+            );
+            app.UsePathBase(Configuration.GetValue<string>("Subdirectory"));
         }
     }
 }

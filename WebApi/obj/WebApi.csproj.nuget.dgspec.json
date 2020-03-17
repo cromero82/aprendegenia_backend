@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\webapi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\webapi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\webapi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\WebApi\\WebApi.csproj",
+        "projectPath": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\webapi\\WebApi.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\WebApi\\obj\\",
+        "outputPath": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\webapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
