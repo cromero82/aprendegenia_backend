@@ -55,7 +55,7 @@ namespace WebApi
             app.UseCors(builder => 
                 builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()//.WithOrigins("http://localhost:4200")
             );
-            app.UsePathBase(Configuration.GetValue<string>("Subdirectory"));
+            // app.UsePathBase(Configuration.GetValue<string>("Subdirectory"));
         }
     }
 }
