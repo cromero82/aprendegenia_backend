@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\webapi\\WebApi.csproj": {}
+    "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\Webapi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\webapi\\WebApi.csproj": {
+    "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\Webapi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\webapi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\Webapi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\webapi\\WebApi.csproj",
+        "projectPath": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\Webapi\\WebApi.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\webapi\\obj\\",
+        "outputPath": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\Webapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -38,6 +38,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.AspNetCore.HttpOverrides": {
+              "target": "Package",
+              "version": "(, )"
+            },
             "Microsoft.AspNetCore.Mvc.Abstractions": {
               "target": "Package",
               "version": "[2.2.0, )"
