@@ -2170,6 +2170,36 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "CoreLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/CoreLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CoreLayer.dll": {}
+        }
+      },
+      "Persistence/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "CoreLayer": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
+          "Microsoft.EntityFrameworkCore": "3.1.3",
+          "NpgSql.EntityFrameworkCore.PostgreSQL.Design": "1.1.1",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "3.1.3"
+        },
+        "compile": {
+          "bin/placeholder/Persistence.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Persistence.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -7067,17 +7097,29 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "CoreLayer/1.0.0": {
+      "type": "project",
+      "path": "../Core/CoreLayer.csproj",
+      "msbuildProject": "../Core/CoreLayer.csproj"
+    },
+    "Persistence/1.0.0": {
+      "type": "project",
+      "path": "../Persistencia/Persistence.csproj",
+      "msbuildProject": "../Persistencia/Persistence.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "CoreLayer >= 1.0.0",
       "Microsoft.AspNetCore.HttpOverrides >= 2.2.0",
       "Microsoft.AspNetCore.Mvc.Abstractions >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 3.1.2",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.2",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.1",
       "NpgSql.EntityFrameworkCore.PostgreSQL.Design >= 1.1.1",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 3.1.0"
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 3.1.0",
+      "Persistence >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -7086,11 +7128,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\Webapi\\WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\WebApi\\WebApi.csproj",
       "projectName": "WebApi",
-      "projectPath": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\Webapi\\WebApi.csproj",
+      "projectPath": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\WebApi\\WebApi.csproj",
       "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\Webapi\\obj\\",
+      "outputPath": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7105,7 +7147,14 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\Core\\CoreLayer.csproj": {
+              "projectPath": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\Core\\CoreLayer.csproj"
+            },
+            "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\Persistencia\\Persistence.csproj": {
+              "projectPath": "C:\\Users\\andre\\source\\repos\\aprendegenia_backend\\Persistencia\\Persistence.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -7166,8 +7215,28 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Degradación del paquete detectada: Npgsql.EntityFrameworkCore.PostgreSQL de 3.1.3 a 3.1.0. Haga referencia al paquete directamente desde el proyecto para seleccionar una versión diferente. \r\n WebApi -> Persistence -> Npgsql.EntityFrameworkCore.PostgreSQL (>= 3.1.3) \r\n WebApi -> Npgsql.EntityFrameworkCore.PostgreSQL (>= 3.1.0)",
+      "libraryId": "Npgsql.EntityFrameworkCore.PostgreSQL",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Degradación del paquete detectada: Microsoft.EntityFrameworkCore de 3.1.3 a 3.1.2. Haga referencia al paquete directamente desde el proyecto para seleccionar una versión diferente. \r\n WebApi -> Persistence -> Microsoft.EntityFrameworkCore (>= 3.1.3) \r\n WebApi -> Microsoft.EntityFrameworkCore (>= 3.1.2)",
+      "libraryId": "Microsoft.EntityFrameworkCore",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

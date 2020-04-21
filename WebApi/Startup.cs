@@ -13,6 +13,11 @@ using Microsoft.Extensions.Logging;
 using WebApi.ModelsEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.HttpOverrides;
+using Core;
+using Persistence;
+using CoreLayer;
+using CoreLayer.Dto;
+using Persistence.Services;
 
 namespace WebApi
 {
@@ -29,9 +34,11 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("AppDbContext"))
-            );
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseNpgsql(Configuration.GetConnectionString("AppDbContext"))
+            //);
+            services.AddScoped<IUnitOfWorks, UnitOfWork>();
+            services.AddScoped<IService<PersonaDto>, PersonaService>();
             services.AddControllers();
         }
 
@@ -48,7 +55,6 @@ namespace WebApi
             app.UseRouting();
 
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

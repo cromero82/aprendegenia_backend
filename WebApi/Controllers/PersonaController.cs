@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using Core;
+using CoreLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WebApi.ModelsEntities;
 
 namespace WebApi.Controllers
 {
@@ -14,45 +10,42 @@ namespace WebApi.Controllers
     public class PersonaController : ControllerBase
     {
         private readonly ILogger<PersonaController> _logger;
-        private readonly ApplicationDbContext dbContext;
 
-        public PersonaController(ILogger<PersonaController> logger, ApplicationDbContext dbContext)
+        public IUnitOfWorks _unitOfWork { get; }
+
+        public PersonaController(ILogger<PersonaController> logger, IUnitOfWorks unitOfWork)
         {
             _logger = logger;
-            this.dbContext = dbContext;
-        }
-
-        // GET: api/Persona
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2", "value3" };
+            _unitOfWork = unitOfWork;
         }
 
         // GET: api/Persona/5
         [HttpGet("{id}", Name = "Get")]
         public IActionResult Get(int id)
         {
-            var persona = dbContext.Persona.Where( x=> x.Id == id).FirstOrDefault();
+            var persona =_unitOfWork.Persona.GetBy(id);
             return Ok(persona);
         }
 
         // POST: api/Persona
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post(Persona model)
         {
+            _unitOfWork.Persona.Add(model);
         }
 
         // PUT: api/Persona/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, Persona model)
         {
+            _unitOfWork.Persona.Update(model);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            _unitOfWork.Persona.Delete(id);
         }
     }
 }

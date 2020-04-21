@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace Persistencia.Entities
+namespace CoreLayer.Dto
 {
-    public partial class Persona
+    public class PersonaDto
     {
         public int Id { get; set; }
         public string Nombres { get; set; }
