@@ -28,7 +28,7 @@ namespace Persistence.Services
             return _jresult;
         }
 
-        public JResult GetAllBy(PersonaDto , string field)
+        public JResult GetAllBy(PersonaDto model, string field)
         {
             return _jresult;
         }

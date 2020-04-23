@@ -1,7 +1,10 @@
 using Core;
+using CoreLayer;
+using CoreLayer.Dto;
 using CoreLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Persistence;
 
 namespace WebApi.Controllers
 {
@@ -11,41 +14,43 @@ namespace WebApi.Controllers
     {
         private readonly ILogger<PersonaController> _logger;
 
-        public IUnitOfWorks _unitOfWork { get; }
+        public IService<PersonaDto> _service { get; }
 
-        public PersonaController(ILogger<PersonaController> logger, IUnitOfWorks unitOfWork)
+        public PersonaController(ILogger<PersonaController> logger, IService<PersonaDto> service)
         {
             _logger = logger;
-            _unitOfWork = unitOfWork;
+            _service = service;
         }
 
         // GET: api/Persona/5
         [HttpGet("{id}", Name = "Get")]
         public IActionResult Get(int id)
         {
-            var persona =_unitOfWork.Persona.GetBy(id);
-            return Ok(persona);
+            //var persona =_unitOfWork.Persona.GetBy(id);
+            var data= _service.GetBy(id);
+            return Ok(data);
         }
 
         // POST: api/Persona
         [HttpPost]
-        public void Post(Persona model)
+        public void Post(PersonaDto model)
         {
-            _unitOfWork.Persona.Add(model);
+            var data = _service.Add(model);
         }
 
         // PUT: api/Persona/5
-        [HttpPut("{id}")]
-        public void Put(int id, Persona model)
-        {
-            _unitOfWork.Persona.Update(model);
-        }
+        //[HttpPut("{id}")]
+        //public void Put(int id, PersonaDto model)
+        //{
+        //    var data = _service.Update(model);
+            
+        //}
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-            _unitOfWork.Persona.Delete(id);
-        }
+        //// DELETE: api/ApiWithActions/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //    _unitOfWork.Persona.Delete(id);
+        //}
     }
 }
