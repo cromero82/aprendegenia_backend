@@ -34,8 +34,16 @@ namespace Domain.Services
 
         public JResult GetBy(int id)
         {
-            var data = _unitOfWorks.Persona.GetBy(id);
-            _jresult.Data = data;
+            try
+            {
+                var data = _unitOfWorks.Persona.GetBy(id);
+                _jresult.Data = data;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
             return _jresult;
         }
 

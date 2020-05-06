@@ -9,11 +9,12 @@ namespace WebApi.Controllers
     [ApiController]
     public class PersonaController : ControllerBase
     {
-    
+        public ILogger<PersonaDto> _logger { get; }
         public IService<PersonaDto> _service { get; }
 
-        public PersonaController( IService<PersonaDto> service)
+        public PersonaController(ILogger<PersonaDto> logger,  IService<PersonaDto> service)
         {
+            this._logger = logger;
             _service = service;
         }
 
@@ -22,6 +23,7 @@ namespace WebApi.Controllers
         public IActionResult Get(int id)
         {
             //var persona =_unitOfWork.Persona.GetBy(id);
+            _logger.LogInformation("obteniendo persona");
             var data= _service.GetBy(id);
             return Ok(data);
         }
