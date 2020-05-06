@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CoreLayer.Utils
+namespace Infraestructura.Utils
 {
     public class JResult
     {

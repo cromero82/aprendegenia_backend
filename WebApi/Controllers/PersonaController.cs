@@ -1,10 +1,7 @@
-using Core;
-using CoreLayer;
-using CoreLayer.Dto;
-using CoreLayer.Models;
+using Infraestructura;
+using Infraestructura.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Persistence;
 
 namespace WebApi.Controllers
 {
@@ -12,13 +9,11 @@ namespace WebApi.Controllers
     [ApiController]
     public class PersonaController : ControllerBase
     {
-        private readonly ILogger<PersonaController> _logger;
-
+    
         public IService<PersonaDto> _service { get; }
 
-        public PersonaController(ILogger<PersonaController> logger, IService<PersonaDto> service)
+        public PersonaController( IService<PersonaDto> service)
         {
-            _logger = logger;
             _service = service;
         }
 

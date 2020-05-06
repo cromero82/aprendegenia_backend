@@ -1,23 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using WebApi.ModelsEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.HttpOverrides;
-using Core;
-using Persistence;
-using CoreLayer;
-using CoreLayer.Dto;
-using Persistence.Services;
+using Domain;
+using Infraestructura;
+using Infraestructura.Dto;
+using Domain.Services;
 
 namespace WebApi
 {
@@ -34,12 +26,14 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseNpgsql(Configuration.GetConnectionString("AppDbContext"))
-            //);
+            services.AddDbContext<Domain.ApplicationDbContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("AppDbContext"))
+            );
             services.AddScoped<IUnitOfWorks, UnitOfWork>();
             services.AddScoped<IService<PersonaDto>, PersonaService>();
             services.AddControllers();
+
+            // The following will be picked up by Application Insights.
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,4 +1,4 @@
-﻿namespace CoreLayer.Models
+﻿namespace Domain.Models
 {
     public partial class Persona
     {

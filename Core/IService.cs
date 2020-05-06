@@ -1,9 +1,9 @@
-﻿using CoreLayer.Utils;
+﻿using Infraestructura.Utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CoreLayer
+namespace Infraestructura
 {
     public interface IService<T>
     {

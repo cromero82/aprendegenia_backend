@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using CoreLayer.Models;
+using Domain.Models;
 
-namespace Persistence
+namespace Domain
 {
     public partial class ApplicationDbContext : DbContext
     {

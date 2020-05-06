@@ -1,12 +1,11 @@
-﻿using Core;
-using CoreLayer;
-using CoreLayer.Dto;
-using CoreLayer.Utils;
+﻿using Infraestructura;
+using Infraestructura.Dto;
+using Infraestructura.Utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Persistence.Services
+namespace Domain.Services
 {
     public class PersonaService : IService<PersonaDto>
     {
@@ -33,8 +32,10 @@ namespace Persistence.Services
             return _jresult;
         }
 
-        public JResult GetBy(int Id)
+        public JResult GetBy(int id)
         {
+            var data = _unitOfWorks.Persona.GetBy(id);
+            _jresult.Data = data;
             return _jresult;
         }
 

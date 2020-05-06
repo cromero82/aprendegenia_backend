@@ -1,11 +1,21 @@
-﻿using CoreLayer.Models;
-using CoreLayer.Repositories;
+﻿using Domain;
+using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Persistence.Repositories
+namespace Infraestructura.Repositories
 {
+    public interface IPersonaRepository<T>
+    {
+        T GetBy(int Id);
+        IEnumerable<T> GetAllBy(string document);
+        void Add(T model);
+        void Delete(int id);
+        void Update(T model);
+        abstract IQueryable<T> getQueryBase();
+    }
+
     public class PersonaRepository : IPersonaRepository<Persona>
     {
         private readonly ApplicationDbContext _context;

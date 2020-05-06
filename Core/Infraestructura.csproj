@@ -10,4 +10,8 @@
     <None Remove="ViewModels\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Persistencia\Domain.csproj" />
+  </ItemGroup>
+
 </Project>
